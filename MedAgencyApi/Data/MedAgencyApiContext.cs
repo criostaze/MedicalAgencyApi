@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MedAgencyApi.Models;
 using System.ComponentModel.DataAnnotations;
+using MedAgencyApi.Data.Interfaces;
 
 namespace MedAgencyApi.Data
 {
