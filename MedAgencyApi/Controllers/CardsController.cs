@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MedAgencyApi.Data;
 using MedAgencyApi.Models;
+using MedAgencyApi.Services;
 
 namespace MedAgencyApi.Controllers
 {
@@ -14,25 +15,26 @@ namespace MedAgencyApi.Controllers
     [ApiController]
     public class CardsController : ControllerBase
     {
-        private readonly MedAgencyApiContext _context;
+        private readonly СardService _cardService;
 
-        public CardsController(MedAgencyApiContext context)
+        public CardsController(СardService cardService)
         {
-            _context = context;
+            _cardService = cardService;
         }
 
         // GET: api/Cards
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Card>>> GetCard()
         {
-            return await _context.Card.ToListAsync();
+            
+            return  Ok(await _cardService.GetCard());
         }
 
         // GET: api/Cards/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Card>> GetCard(int id)
         {
-            var card = await _context.Card.FindAsync(id);
+            var card = await _cardService.GetCard(id);
 
             if (card == null)
             {
@@ -53,15 +55,15 @@ namespace MedAgencyApi.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(card).State = EntityState.Modified;
+            
 
             try
             {
-                await _context.SaveChangesAsync();
+                _cardService.PutCard(id, card);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CardExists(id))
+                if (!_cardService.CardExists(id))
                 {
                     return NotFound();
                 }
@@ -80,10 +82,9 @@ namespace MedAgencyApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Card>> CreateCard(Card card)
         {
-            _context.Card.Add(card);
-            await _context.SaveChangesAsync();
+            await _cardService.CreateCard(card);
 
-            return CreatedAtAction("GetCard", new { id = card.Id }, card);
+            return await _cardService.GetCard(card.Id);
         }
 
 
@@ -92,21 +93,19 @@ namespace MedAgencyApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Card>> DeleteCard(int id)
         {
-            var card = await _context.Card.FindAsync(id);
+            var card = await _cardService.GetCard(id);
             if (card == null)
             {
                 return NotFound();
             }
 
-            _context.Card.Remove(card);
-            await _context.SaveChangesAsync();
 
-            return card;
+            return await _cardService.DeleteCard(card.Id);
         }
 
         private bool CardExists(int id)
         {
-            return _context.Card.Any(e => e.Id == id);
+            return _cardService.CardExists(id);
         }
     }
 }

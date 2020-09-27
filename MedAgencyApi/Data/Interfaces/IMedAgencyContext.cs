@@ -9,5 +9,6 @@ namespace MedAgencyApi.Data.Interfaces
 	public interface IMedAgencyContext
 	{
 
+
 	}
 }

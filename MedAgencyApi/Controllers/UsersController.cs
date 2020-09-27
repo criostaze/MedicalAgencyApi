@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MedAgencyApi.Data;
 using MedAgencyApi.Models;
+using MedAgencyApi.Services;
 
 namespace MedAgencyApi.Controllers
 {
@@ -14,25 +15,25 @@ namespace MedAgencyApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly MedAgencyApiContext _context;
+        private readonly UserService _userService;
 
-        public UsersController(MedAgencyApiContext context)
+        public UsersController(UserService userService)
         {
-            _context = context;
+            _userService = userService;
         }
 
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return await _context.User.ToListAsync();
+            return Ok(await _userService.GetUser());
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.User.FindAsync(id);
+            var user = await _userService.GetUser(id);
 
             if (user == null)
             {
@@ -80,31 +81,19 @@ namespace MedAgencyApi.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.User.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return await _userService.PostUser(user);
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return user;
+            return await _userService.DeleteUser(id);
         }
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _userService.UserExists(id);
         }
     }
 }
