@@ -3,10 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CardsViewComponent } from './cards-view/cards-view.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { AccountPageComponent } from './account-page/account-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardsViewComponent,
+    WelcomePageComponent,
+    ErrorPageComponent,
+    AboutPageComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,

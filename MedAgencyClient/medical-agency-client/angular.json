@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "medical-agency-client"
+    }
+  },
+  "defaultProject": "medical-agency-client",
+  "cli": {
+    "analytics": false
+  }
 }
