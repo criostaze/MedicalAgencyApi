@@ -1,0 +1,9 @@
+{
+  "name": "med-agency-client",
+  "version": "0.0.0",
+  "description": "MedAgencyClient",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
