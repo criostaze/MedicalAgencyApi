@@ -1,3 +1,9 @@
-<div>
-    Добро пожаловать!
-</div>
+<p>welcome-page works!</p>
+<ul>
+    <li *ngFor="let user of users">
+        <p>Имя пользователя: {{user?.login}}</p>
+        <p>Возраст пользователя: {{user?.email}}</p>
+        <p>Дата рождения: {{user?.birthDate}}</p>
+        <p>Дата регистрации: {{user?.registrationDate}}</p>
+    </li>
+</ul>
