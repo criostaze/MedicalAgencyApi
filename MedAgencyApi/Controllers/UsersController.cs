@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MedAgencyApi.Data;
 using MedAgencyApi.Models;
-using MedAgencyApi.Services;
 
 namespace MedAgencyApi.Controllers
 {
