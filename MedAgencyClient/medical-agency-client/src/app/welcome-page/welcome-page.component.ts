@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../services/http.service';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePageComponent implements OnInit {
 
-  constructor() { }
+  users: User[];
+  constructor(private httpService: HttpService){}
 
   ngOnInit(): void {
+    this.http.get('assets/user.json').subscribe((data:User) => this.users = data);
   }
 
 }
