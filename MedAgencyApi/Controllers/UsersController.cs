@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MedAgencyApi.Data;
 using MedAgencyApi.Models;
+using MedAgencyApi.Services;
 
 namespace MedAgencyApi.Controllers
 {
@@ -52,12 +53,10 @@ namespace MedAgencyApi.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(user).State = EntityState.Modified;
-
+            
             try
             {
-                await _context.SaveChangesAsync();
+                _userService.PutUser(user.Id, user);
             }
             catch (DbUpdateConcurrencyException)
             {
