@@ -9,11 +9,11 @@ import {User} from '../../models/user';
 })
 export class WelcomePageComponent implements OnInit {
 
-  users: User[];
-  constructor(private httpService: HttpService){}
+//  users: User[];
+ // constructor(private httpService: HttpService){}
 
   ngOnInit(): void {
-    this.http.get('assets/user.json').subscribe((data:User) => this.users = data);
+    //this.httpService.getData('').subscribe((data:User[]) => this.users = data);
   }
 
 }

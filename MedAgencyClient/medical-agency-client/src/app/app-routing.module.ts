@@ -8,15 +8,15 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomePageComponent},  
   { path: 'about', component: AboutPageComponent},
   { path: 'card', component: CardsViewComponent},
-  { path: 'account', component: AccountPageComponent}
+  { path: 'account', component: AccountPageComponent},
+  { path: 'error', component: ErrorPageComponent},
+  { path: 'welcome', component: WelcomePageComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
- // declarations: [AppComponent, CardsViewComponent, AccountPageComponent, ErrorPageComponent, AboutPageComponent, WelcomePageComponent],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

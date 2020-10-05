@@ -17,8 +17,7 @@ import { AccountPageComponent } from './account-page/account-page.component';
     WelcomePageComponent,
     ErrorPageComponent,
     AboutPageComponent,
-    AccountPageComponent,
-    HttpClientModule
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,

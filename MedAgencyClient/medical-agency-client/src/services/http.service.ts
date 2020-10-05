@@ -7,7 +7,7 @@ export class HttpService{
     constructor(private http: HttpClient){ }
 
     // tslint:disable-next-line: typedef
-    getData(){
-        return this.http.get('assets/user.json');
+    getData(url){
+        return this.http.get(url);
     }
 }
