@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'account', component: AccountPageComponent},
   { path: 'error', component: ErrorPageComponent},
   { path: 'welcome', component: WelcomePageComponent},
+  {path: '', redirectTo: '/welcome', pathMatch: 'full'}
 ];
 
 @NgModule({
