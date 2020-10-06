@@ -60,6 +60,10 @@ namespace MedAgencyApi
                     });
 
             services.AddControllersWithViews();
+
+            services.AddTransient<MedAgencyApi.Services.UserService>();
+			services.AddTransient<MedAgencyApi.Services.ÑardService>();
+            services.AddTransient<MedAgencyApiContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
