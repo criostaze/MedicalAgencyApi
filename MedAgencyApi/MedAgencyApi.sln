@@ -14,9 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalAgencyServices", "..
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "MedAgencyClient", "..\MedAgencyClient\MedAgencyClient.njsproj", "{6D51D2DD-B9F4-45A4-BE3F-D0B34E4F8DC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedAgencyDataAccess", "..\MedAgencyDataAccess\MedAgencyDataAccess.csproj", "{CD1580DC-2027-4F80-AFE9-30EF07609F6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedAgencyDataAccess", "..\MedAgencyDataAccess\MedAgencyDataAccess.csproj", "{CD1580DC-2027-4F80-AFE9-30EF07609F6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedAgencyModels", "..\MedAgencyModels\MedAgencyModels.csproj", "{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedAgencyModels", "..\MedAgencyModels\MedAgencyModels.csproj", "{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedAgencyIdentityServer", "..\MedAgencyIdentityServcer\MedAgencyIdentityServer.csproj", "{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
