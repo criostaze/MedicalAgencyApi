@@ -5,6 +5,7 @@ export class User {
     adress: string;
     Email: string;
     login: string;
-    jex: string;
+    role: string;
+    hex: string;
     soult: string;
 }

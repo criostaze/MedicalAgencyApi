@@ -1,0 +1,12 @@
+{
+    "age": 28,
+    "id": "number",
+    "registrationDate": "string",
+    "birthDate": "string",
+    "adress": "string",
+    "Email": "string",
+    "role": "admin",
+    "login": "string",
+    "jex": "string",
+    "soult": "еуые"
+}
