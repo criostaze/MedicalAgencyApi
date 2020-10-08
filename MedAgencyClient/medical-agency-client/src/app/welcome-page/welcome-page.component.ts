@@ -9,11 +9,9 @@ import {User} from '../../models/user';
 })
 export class WelcomePageComponent implements OnInit {
 
-//  users: User[];
- // constructor(private httpService: HttpService){}
+ constructor(){}
 
   ngOnInit(): void {
-    //this.httpService.getData('').subscribe((data:User[]) => this.users = data);
   }
 
 }
