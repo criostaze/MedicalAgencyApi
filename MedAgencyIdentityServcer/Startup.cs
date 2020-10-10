@@ -12,6 +12,7 @@ using IdentityServer4;
 using IdentityServer4.Configuration;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
+using Microsoft.Extensions.Logging;
 
 namespace MedAgencyIdentityServcer
 {
@@ -70,22 +71,17 @@ namespace MedAgencyIdentityServcer
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+           //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! loggerFactory.AddConsole(LogLevel.Debug);
+            app.UseDeveloperExceptionPage();
 
-            app.UseRouting();
+            // подключаем middleware IdentityServer
+            app.UseIdentityServer();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            // эти 2 строчки нужны, чтобы нормально обрабатывались страницы логина
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
 
         public static IEnumerable<IdentityResource> GetIdentityResources()
