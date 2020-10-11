@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedAgencyIdentityServer", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiIdentityTest", "..\ApiIdentityTest\ApiIdentityTest.csproj", "{69554114-230F-42CB-AEC9-787432824500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTestForIdentity", "..\ClientTestForIdentity\ClientTestForIdentity.csproj", "{8CECE119-0B10-4863-AB04-A38140716082}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientTestForIdentity", "..\ClientTestForIdentity\ClientTestForIdentity.csproj", "{8CECE119-0B10-4863-AB04-A38140716082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
