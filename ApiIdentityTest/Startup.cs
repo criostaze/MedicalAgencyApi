@@ -28,6 +28,11 @@ namespace ApiIdentityTest
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddControllersWithViews(mvcOtions =>
+			{
+				mvcOtions.EnableEndpointRouting = false;
+			});
+
 			services.AddCors(options =>
 			{
 				// задаём политику CORS, чтобы наше клиентское приложение могло отправить запрос на сервер API
@@ -78,6 +83,7 @@ namespace ApiIdentityTest
 			// добавляем middleware для CORS 
 			app.UseCors("default");
 			app.UseAuthentication();
+
 
 			// добавляем middleware для заполнения объекта пользователя из OpenId  Connect JWT-токенов
 			//app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
