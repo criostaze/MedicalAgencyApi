@@ -1,12 +1,12 @@
 {
     "age": 28,
-    "id": "number",
-    "registrationDate": "string",
-    "birthDate": "string",
-    "adress": "string",
-    "Email": "string",
+    "id": "1",
+    "registrationDate": "22-09-2020",
+    "birthDate": "22-02-1996",
+    "adress": "Samara, pushkin street, 12",
+    "Email": "criostaze@yandex.ru",
     "role": "admin",
-    "login": "string",
-    "jex": "string",
-    "soult": "еуые"
+    "login": "criostaze",
+    "jex": "test",
+    "soult": "test"
 }
