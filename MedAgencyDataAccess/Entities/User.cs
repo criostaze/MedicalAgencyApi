@@ -1,24 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace MedAgencyApi.Models
+namespace MedAgencyDataAccess.Entities
 {
-    public class User
+	public class User
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
+
         [Required]
         public DateTime RegistrationDate { get; set; }
+
         public DateTime BirthDate { get; set; }
+
         public string Adress { get; set; }
+
         public string Email { get; set; }
+
         public string Login { get; set; }
+
         public string Password { get; set; }
+
         public string Role { get; set; }
-        private string hex { get; set; }
-        public string soult { get; set; }
-        //sdfsdfsdfsdf
+
+        public string Salt { get; set; }
     }
 }

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MedAgencyApi.Entities;
 using Microsoft.EntityFrameworkCore;
-using MedAgencyApi.Models;
-using System.ComponentModel.DataAnnotations;
 
-namespace MedAgencyApi.Data
+namespace MedAgencyDataAccess.Data
 {
-    public class MedAgencyApiContext : DbContext
+	public class MedAgencyApiContext : DbContext
     {
         public MedAgencyApiContext (DbContextOptions<MedAgencyApiContext> options)
             : base(options)
