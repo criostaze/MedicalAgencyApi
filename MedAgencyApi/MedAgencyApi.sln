@@ -16,10 +16,6 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "MedAgencyClient", "..\MedAg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedAgencyDataAccess", "..\MedAgencyDataAccess\MedAgencyDataAccess.csproj", "{CD1580DC-2027-4F80-AFE9-30EF07609F6D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedAgencyModels", "..\MedAgencyModels\MedAgencyModels.csproj", "{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedAgencyIdentityServer", "..\MedAgencyIdentityServcer\MedAgencyIdentityServer.csproj", "{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiIdentityTest", "..\ApiIdentityTest\ApiIdentityTest.csproj", "{69554114-230F-42CB-AEC9-787432824500}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientTestForIdentity", "..\ClientTestForIdentity\ClientTestForIdentity.csproj", "{8CECE119-0B10-4863-AB04-A38140716082}"
@@ -46,14 +42,6 @@ Global
 		{CD1580DC-2027-4F80-AFE9-30EF07609F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD1580DC-2027-4F80-AFE9-30EF07609F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD1580DC-2027-4F80-AFE9-30EF07609F6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C13A4F8A-5598-4C8B-A5EB-F6AAADE89A22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6D24974-ABC2-4642-8FC9-2B1DC5B18305}.Release|Any CPU.Build.0 = Release|Any CPU
 		{69554114-230F-42CB-AEC9-787432824500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{69554114-230F-42CB-AEC9-787432824500}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69554114-230F-42CB-AEC9-787432824500}.Release|Any CPU.ActiveCfg = Release|Any CPU

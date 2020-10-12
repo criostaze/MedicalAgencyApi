@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MedAgencyApi.Data;
-using MedAgencyApi.Models;
+using MedAgencyDataAccess.Data;
+using MedAgencyDataAccess.Entities;
 using MedAgencyApi.Services;
 
 namespace MedAgencyApi.Controllers
@@ -26,7 +26,7 @@ namespace MedAgencyApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return Ok(await _userService.GetUser());
+            return Ok(await _userService.GetUsers());
         }
 
         // GET: api/Users/5
@@ -47,7 +47,7 @@ namespace MedAgencyApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(long id, User user)
         {
             if (id != user.Id)
             {
@@ -89,7 +89,7 @@ namespace MedAgencyApi.Controllers
             return await _userService.DeleteUser(id);
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(long id)
         {
             return _userService.UserExists(id);
         }

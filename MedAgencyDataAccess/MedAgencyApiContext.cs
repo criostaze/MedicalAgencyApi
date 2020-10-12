@@ -1,4 +1,4 @@
-﻿using MedAgencyApi.Entities;
+﻿using MedAgencyDataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedAgencyDataAccess.Data

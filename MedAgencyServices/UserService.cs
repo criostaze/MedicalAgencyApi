@@ -1,7 +1,6 @@
-﻿using MedAgencyApi.Data;
-using MedAgencyApi.Models;
+﻿using MedAgencyDataAccess.Data;
+using MedAgencyDataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,13 +16,13 @@ namespace MedAgencyApi.Services
 			_context = context;
 		}
 
-        public async Task<IEnumerable<User>> GetUser()
+        public async Task<IEnumerable<User>> GetUsers()
         {
             return await _context.User.ToListAsync();
         }
 
 
-        public async Task<User> GetUser(int id)
+        public async Task<User> GetUser(long id)
         {
             var user = await _context.User.FindAsync(id);
 
@@ -31,7 +30,7 @@ namespace MedAgencyApi.Services
         }
 
 
-        public async void PutUser(int id, User user)
+        public async void PutUser(long id, User user)
         {
             _context.Entry(user).State = EntityState.Modified;
 
@@ -64,7 +63,7 @@ namespace MedAgencyApi.Services
         }
 
 
-        public async Task<User> DeleteUser(int id)
+        public async Task<User> DeleteUser(long id)
         {
             var user = await _context.User.FindAsync(id);
             _context.User.Remove(user);
@@ -73,7 +72,7 @@ namespace MedAgencyApi.Services
             return user;
         }
 
-        public bool UserExists(int id)
+        public bool UserExists(long id)
         {
             return _context.User.Any(e => e.Id == id);
         }

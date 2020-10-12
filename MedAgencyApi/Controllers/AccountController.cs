@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using MedAgencyApi.Models;
+using MedAgencyDataAccess.Data;
+using MedAgencyDataAccess.Entities;
 
 namespace MedAgencyApi.Controllers
 {

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MedAgencyApi.Data;
-using MedAgencyApi.Models;
+using MedAgencyDataAccess.Data;
+using MedAgencyDataAccess.Entities;
 using MedAgencyApi.Services;
 
 namespace MedAgencyApi.Controllers
