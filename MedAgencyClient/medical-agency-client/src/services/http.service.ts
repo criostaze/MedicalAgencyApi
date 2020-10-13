@@ -7,7 +7,12 @@ export class HttpService{
     constructor(private http: HttpClient){ }
 
     // tslint:disable-next-line: typedef
-    getData(url){
-        return this.http.get(url);
+    getUser(id){
+        return this.http.get(`https://localhost:44351/api/users/${id}`);
+    }
+
+    // tslint:disable-next-line:typedef
+    getCardOfUser(id){
+        return this.http.get(`https://localhost:44351/api/cards/${id}`);
     }
 }

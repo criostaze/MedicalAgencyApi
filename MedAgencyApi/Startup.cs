@@ -29,7 +29,18 @@ namespace MedAgencyApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                     builder =>
+                     {
+                         builder.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                     });
+            });
+
+            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<MedAgencyApiContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MedAgencyApiContext")));
@@ -59,7 +70,7 @@ namespace MedAgencyApi
                         };
                     });
 
-            services.AddControllersWithViews();
+           // services.AddControllersWithViews();
 
             services.AddTransient<MedAgencyApi.Services.UserService>();
 			services.AddTransient<MedAgencyApi.Services.ÑardService>();
@@ -88,6 +99,7 @@ namespace MedAgencyApi
             //        );
             //});
 
+            app.UseCors("AllowAllOrigins");
 
             app.UseDeveloperExceptionPage();
 

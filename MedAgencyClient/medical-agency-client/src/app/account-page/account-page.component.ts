@@ -15,7 +15,10 @@ export class AccountPageComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.httpService.getData('/assets/userTest.json').subscribe((data: User) => this.user = data);
+    this.httpService.getUser(1).subscribe((data: User) => {
+      this.user = data;
+      console.log(this.user);
+    });
   }
 
 }

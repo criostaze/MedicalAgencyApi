@@ -24,7 +24,7 @@ namespace MedAgencyApi.Controllers
 
         // GET: api/Cards
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Card>>> GetCard()
+        public async Task<ActionResult<IEnumerable<Card>>> GetCards()
         {
             
             return  Ok(await _cardService.GetCard());

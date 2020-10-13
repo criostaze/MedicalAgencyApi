@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/services/http.service';
+import { Card } from '../../models/Card';
 
 @Component({
   selector: 'app-cards-view',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsViewComponent implements OnInit {
 
-  constructor() { }
+  card: Card;
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.httpService.getCardOfUser(1).subscribe((data: Card) => {
+      this.card = data;
+      console.log(this.card);
+    });
   }
+
 
 }
