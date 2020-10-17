@@ -10,6 +10,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { HttpService } from 'src/services/http.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpService } from 'src/services/http.service';
     WelcomePageComponent,
     ErrorPageComponent,
     AboutPageComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/user';
 import { HttpService } from 'src/services/http.service';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-page',
@@ -11,14 +12,25 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
 export class AccountPageComponent implements OnInit {
 
   user: User;
+  id: number;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.httpService.getUser(1).subscribe((data: User) => {
-      this.user = data;
-      console.log(this.user);
-    });
+
+    this.route.paramMap.pipe(
+      switchMap(params => params.getAll('id'))
+    )
+      .subscribe(data => {
+        this.id = +data;
+        this.httpService.getUser(this.id).subscribe((userData: User) => {
+          this.user = userData;
+          console.log(this.user);
+        });
+
+      });
   }
 
 }
+
+

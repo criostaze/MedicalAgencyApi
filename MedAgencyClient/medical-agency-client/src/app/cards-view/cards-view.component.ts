@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { HttpService } from 'src/services/http.service';
 import { Card } from '../../models/Card';
 
@@ -10,15 +12,22 @@ import { Card } from '../../models/Card';
 export class CardsViewComponent implements OnInit {
 
   card: Card;
+  id: number;
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.httpService.getCardOfUser(1).subscribe((data: Card) => {
-      this.card = data;
-      console.log(this.card);
-    });
-  }
 
+    this.route.paramMap.pipe(
+      switchMap(params => params.getAll('id'))
+    )
+      .subscribe(data => {
+        this.id = +data;
+        this.httpService.getCardOfUser(this.id).subscribe((cardData: Card) => {
+          this.card = cardData;
+          console.log(this.card);
+        });
+      });
+  }
 
 }
