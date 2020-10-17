@@ -12,14 +12,14 @@ namespace MedAgencyApi.Controllers
     public class ValuesController : Controller
     {
         [Authorize]
-        [Route("getlogin")]
+        [HttpGet("getlogin")]
 		public IActionResult GetLogin()
         {
             return Ok($"Ваш логин: {User.Identity.Name}");
         }
 
         [Authorize(Roles = "admin")]
-        [Route("getrole")]
+        [HttpGet("getrole")]
         public IActionResult GetRole()
         {
             return Ok("Ваша роль: администратор");

@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using MedAgencyDataAccess.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace MedAgencyApi
 {
@@ -70,7 +72,11 @@ namespace MedAgencyApi
                         };
                     });
 
-           // services.AddControllersWithViews();
+            services.AddMvc();
+
+            services.AddSwaggerGen();
+
+            // services.AddControllersWithViews();
 
             services.AddTransient<MedAgencyApi.Services.UserService>();
 			services.AddTransient<MedAgencyApi.Services.ÑardService>();
@@ -115,6 +121,18 @@ namespace MedAgencyApi
             {
                 endpoints.MapDefaultControllerRoute();
             });
+
+            //  app.UseMvc();
+
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
         }
     }
 }
