@@ -11,6 +11,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { AccountPageComponent } from './account-page/account-page.component';
 import { HttpService } from 'src/services/http.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CallbackComponent } from './callback/callback.component';
+import { ApiAuthorizationModule } from './api-authorization/api-authorization.module';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ErrorPageComponent,
     AboutPageComponent,
     AccountPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ApiAuthorizationModule,
     HttpClientModule
   ],
   providers: [HttpService, HttpClient],
