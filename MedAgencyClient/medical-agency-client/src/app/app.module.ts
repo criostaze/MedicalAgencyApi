@@ -13,6 +13,7 @@ import { HttpService } from 'src/services/http.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ApiAuthorizationModule } from './api-authorization/api-authorization.module';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ApiAuthorizationModule } from './api-authorization/api-authorization.mo
     ApiAuthorizationModule,
     HttpClientModule
   ],
-  providers: [HttpService, HttpClient],
+  providers: [HttpService, HttpClient, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

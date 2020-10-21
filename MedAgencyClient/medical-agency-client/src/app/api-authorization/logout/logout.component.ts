@@ -21,6 +21,7 @@ export class LogoutComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
+  // tslint:disable-next-line:typedef
   async ngOnInit() {
     const action = this.activatedRoute.snapshot.url[1];
     switch (action.path) {
@@ -90,6 +91,7 @@ export class LogoutComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line:typedef
   private async navigateToReturnUrl(returnUrl: string) {
     await this.router.navigateByUrl(returnUrl, {
       replaceUrl: true

@@ -1,7 +1,7 @@
 {
     "age": 28,
-    "id": "number",
-    "registrationDate": "string",
+    "id": 1,
+    "registrationDate": "22",
     "birthDate": "string",
     "adress": "string",
     "Email": "string",

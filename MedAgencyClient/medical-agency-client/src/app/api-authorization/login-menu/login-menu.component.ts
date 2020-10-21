@@ -14,6 +14,7 @@ export class LoginMenuComponent implements OnInit {
 
   constructor(private authorizeService: AuthorizeService) { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     this.isAuthenticated = this.authorizeService.isAuthenticated();
     this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));

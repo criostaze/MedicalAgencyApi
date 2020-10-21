@@ -78,7 +78,28 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "api1"
                     }
+                },
+
+                // angular Client
+                new Client
+                {
+                    ClientId = "TestIdentityAngular",
+                    ClientName = "TestIdentityAngular",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireClientSecret = false,
+
+                    RedirectUris =           { "https://localhost:4200/callback" },
+                    PostLogoutRedirectUris = { "https://localhost:4200/index" },
+                    AllowedCorsOrigins =     { "https://localhost:4200" },
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    }
                 }
+
             };
     }
 }
