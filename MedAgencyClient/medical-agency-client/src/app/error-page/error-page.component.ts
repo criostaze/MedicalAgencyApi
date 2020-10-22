@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { AuthService } from 'src/services/auth.service';
+
 
 @Component({
   selector: 'app-error-page',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorPageComponent implements OnInit {
 
-  constructor() { }
+  response: object;
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
-  ngOnInit(): void {
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      let headers = new HttpHeaders({
+        'Authorization': this.authService.getAuthorizationHeaderValue(),
+        responseType: 'text'
+      });
+
+      this.http.get<any>("http://localhost:5555/api", { headers: headers })
+        .subscribe(
+          response => this.response = response,
+          err => console.log('angular is trash'));
+    } else {
+      this.authService.startAuthentication();
+    }
   }
 
 }

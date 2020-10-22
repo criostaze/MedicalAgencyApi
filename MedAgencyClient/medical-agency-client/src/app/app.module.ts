@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CallbackComponent } from './callback/callback.component';
 import { ApiAuthorizationModule } from './api-authorization/api-authorization.module';
 import { AuthService } from '../services/auth.service';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AuthService } from '../services/auth.service';
     ApiAuthorizationModule,
     HttpClientModule
   ],
-  providers: [HttpService, HttpClient, AuthService],
+  providers: [HttpService, HttpClient, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

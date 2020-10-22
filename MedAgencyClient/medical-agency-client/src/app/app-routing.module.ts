@@ -33,10 +33,11 @@ const routes: Routes = [
   {
     path: '^^',
     component: NotFoundComponent
-  },
-  {
-    path: '', redirectTo: '/welcome',
-    pathMatch: 'full'}
+  }
+  // ,
+  // {
+  //   path: '', redirectTo: '/welcome',
+  //   pathMatch: 'full'}
 ];
 
 @NgModule({

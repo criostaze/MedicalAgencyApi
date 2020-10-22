@@ -42,7 +42,7 @@ export function getClientSettings(): UserManagerSettings {
   return {
     authority: 'http://localhost:5555/',
     client_id: 'angular_spa',
-    redirect_uri: 'http://localhost:4200/auth-callback',
+    redirect_uri: 'http://localhost:4200/error',
     post_logout_redirect_uri: 'http://localhost:4200/',
     response_type: "id_token token",
     scope: "openid profile api1",
