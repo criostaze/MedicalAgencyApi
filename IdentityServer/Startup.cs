@@ -1,75 +1,91 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-using IdentityServer4;
-using IdentityServerHost.Quickstart.UI;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Logging;
+using IdentityServer4.Models;
+using IdentityServer4.Quickstart.UI;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
-namespace IdentityServer
+namespace IdentityServer4InMem
 {
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-
-            var builder = services.AddIdentityServer()
-                .AddInMemoryIdentityResources(Config.IdentityResources)
-                .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(Config.Clients)
+            services.AddMvc();
+            
+            services.AddIdentityServer()
+                .AddDeveloperSigningCredential()
+                .AddInMemoryIdentityResources(identityResources)
+                .AddInMemoryApiResources(apiResources)
+                .AddInMemoryClients(clients)
                 .AddTestUsers(TestUsers.Users);
 
-            builder.AddDeveloperSigningCredential();
-
             services.AddAuthentication()
-                .AddGoogle("Google", options =>
+                .AddIdentityServerAuthentication("api", options =>
                 {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
-                    options.ClientId = "<insert here>";
-                    options.ClientSecret = "<insert here>";
-                })
-                .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                    options.SaveTokens = true;
-
-                    options.Authority = "https://demo.identityserver.io/";
-                    options.ClientId = "interactive.confidential";
-                    options.ClientSecret = "secret";
-                    options.ResponseType = "code";
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
+                    options.Authority = "http://localhost:5555";
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = "api1";
                 });
         }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            loggerFactory.AddConsole();
+            app.UseDeveloperExceptionPage();
 
-            app.UseStaticFiles();
-            app.UseRouting();
+            app.Map("/api", api =>
+            {
+                api.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+                api.UseAuthentication();
+                
+                api.Run(async context =>
+                {
+                    var result = await context.AuthenticateAsync("api");
+                    if (!result.Succeeded)
+                    {
+                        context.Response.StatusCode = 401;
+                        return;
+                    }
+
+                    context.Response.ContentType = "application/json";
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject("API Response!"));
+                });
+            });
 
             app.UseIdentityServer();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-            });
+            
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
+        
+        private readonly List<IdentityResource> identityResources = new List<IdentityResource>
+        {
+            new IdentityResources.OpenId(),
+            new IdentityResources.Profile()
+        };
+
+        private readonly List<ApiResource> apiResources = new List<ApiResource>
+        {
+            new ApiResource("api1", "My API #1")
+        };
+        
+        private readonly List<Client> clients = new List<Client>
+        {
+            new Client
+            {
+                ClientId = "angular_spa",
+                ClientName = "Angular 4 Client",
+                AllowedGrantTypes = GrantTypes.Implicit,
+                AllowedScopes = new List<string> {"openid", "profile", "api1"},
+                RedirectUris = new List<string> { "http://localhost:4200/error"},
+                PostLogoutRedirectUris = new List<string> {"http://localhost:4200/"},
+                AllowedCorsOrigins = new List<string> {"http://localhost:4200"},
+                AllowAccessTokensViaBrowser = true
+            }
+        };
     }
 }
