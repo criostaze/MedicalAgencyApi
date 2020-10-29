@@ -7,6 +7,7 @@ using IdentityServer4.Quickstart.UI;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using IdentityServer4.Services;
 
 namespace IdentityServer4InMem
 {
