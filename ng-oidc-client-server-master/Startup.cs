@@ -112,9 +112,9 @@ namespace ng_oidc_client_server {
 
         public static List<Client> Clients = new List<Client> {
             new Client {
-            ClientId = "ng-oidc-client-identity",
-            ClientName = "Example client for ng-oidc-client and IdentityServer 4",
-            AllowedGrantTypes = GrantTypes.Implicit,
+            ClientId = "angular_spa",
+            ClientName = "angular_spa",
+            AllowedGrantTypes = GrantTypes.Code,
             AllowedScopes = new List<string> {
             IdentityServerConstants.StandardScopes.OpenId,
             IdentityServerConstants.StandardScopes.Profile,

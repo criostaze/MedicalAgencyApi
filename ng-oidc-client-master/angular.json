@@ -173,5 +173,8 @@
       }
     }
   },
-  "defaultProject": "ng-oidc-client-app"
+  "defaultProject": "ng-oidc-client-app",
+  "cli": {
+    "analytics": "99758955-f05a-4176-bd2f-2d7683a10920"
+  }
 }
